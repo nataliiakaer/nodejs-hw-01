@@ -1,10 +1,12 @@
 import { PATH_DB } from '../constants/contacts.js';
+import fs from 'node:fs/promises';
 
 export const readContacts = async () => {
   try {
-    const data = await PATH_DB.readFile('../db/db.json', 'utf8');
-    console.log('Вміст файлу: ', data);
+    const data = await fs.readFile(PATH_DB, 'utf-8');
+    console.log(data);
   } catch (error) {
-    console.log('Помилка читання файлу: ', error);
+    console.log(error);
   }
 };
+
